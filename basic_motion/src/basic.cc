@@ -26,7 +26,7 @@ void BasicState::set_back_servo_to(RobotParts part, float value) {
   }
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Setting back servo number %d to [value=%f].", part, value);
 
-  back_values.value[part] = value; 
+  back_servos.value[part] = value; 
 }
 
 void BasicState::set_front_servo_to(RobotParts part, float value) {
@@ -36,7 +36,7 @@ void BasicState::set_front_servo_to(RobotParts part, float value) {
   }
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Setting front servo number %d to [value=%f].", part, value);
 
-  front_values.value[part] = value; 
+  front_servos.value[part] = value; 
 }
 
 void BasicState::set_all_servos_to(float value) {
@@ -48,8 +48,8 @@ void BasicState::set_all_servos_to(float value) {
 
   // Taking the values from the YAML file.
   for (int i = 0; i < SERVO_MAX_SIZE; i++) {
-    front_values.value[i] = value; 
-    back_values.value[i] = value;
+    front_servos.value[i] = value; 
+    back_servos.value[i] = value;
   }
 }
 
@@ -58,8 +58,8 @@ void BasicState::set_all_servos_to_center() {
 
   // Taking the values from the YAML file.
   for (int i = 0; i < SERVO_MAX_SIZE; i++) {
-    front_values.value[i] = 0.0f; 
-    back_values.value[i] = 0.0f;
+    front_servos.value[i] = 0.0f; 
+    back_servos.value[i] = 0.0f;
   }
 }
 
@@ -67,8 +67,8 @@ void BasicState::set_all_servos_to_min() {
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Setting front & back servos to minimum value.");
 
   for (int i = 0; i < SERVO_MAX_SIZE; i++) {
-    front_values.value[i] = -1.0f; 
-    back_values.value[i] = -1.0f;
+    front_servos.value[i] = -1.0f; 
+    back_servos.value[i] = -1.0f;
   }
 }
 
@@ -76,8 +76,8 @@ void BasicState::set_all_servos_to_max() {
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Setting front & back servos to maximum value.");
 
   for (int i = 0; i < SERVO_MAX_SIZE; i++) {
-    front_values.value[i] = 1.0f;
-    back_values.value[i] = 1.0f;
+    front_servos.value[i] = 1.0f;
+    back_servos.value[i] = 1.0f;
   }
 }
 

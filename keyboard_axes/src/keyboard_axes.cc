@@ -58,18 +58,18 @@ void KeyboardAxesState::on_loop() {
       break;
   }
   for (int i = 0; i < SERVO_MAX_SIZE / 3; i++) {
-    front_values.value[i + (SERVO_MAX_SIZE / 3)] = -biceps_value;
-    back_values.value[i + (SERVO_MAX_SIZE / 3)] = -biceps_value;
+    front_servos.value[i + (SERVO_MAX_SIZE / 3)] = -biceps_value;
+    back_servos.value[i + (SERVO_MAX_SIZE / 3)] = -biceps_value;
   }
 
-  front_values.value[RIGHT_BODY] = body_value;
-  back_values.value[RIGHT_BODY] = body_value;
-  front_values.value[LEFT_BODY] = -body_value;
-  back_values.value[LEFT_BODY] = -body_value;
+  front_servos.value[RIGHT_BODY] = body_value;
+  back_servos.value[RIGHT_BODY] = body_value;
+  front_servos.value[LEFT_BODY] = -body_value;
+  back_servos.value[LEFT_BODY] = -body_value;
 
   for (int k = 0; k < SERVO_MAX_SIZE / 3; k++) {
-    front_values.value[k + 2 * (SERVO_MAX_SIZE / 3)] = leg_value;
-    back_values.value[k + 2 * (SERVO_MAX_SIZE / 3)] = leg_value;
+    front_servos.value[k + 2 * (SERVO_MAX_SIZE / 3)] = leg_value;
+    back_servos.value[k + 2 * (SERVO_MAX_SIZE / 3)] = leg_value;
   }
 }
 
