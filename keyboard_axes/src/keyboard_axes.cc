@@ -71,6 +71,9 @@ void KeyboardAxesState::on_loop() {
     front_servos.value[k + 2 * (SERVO_MAX_SIZE / 3)] = leg_value;
     back_servos.value[k + 2 * (SERVO_MAX_SIZE / 3)] = leg_value;
   }
+
+  front_state_publisher->publish(front_servos);
+  back_state_publisher->publish(back_servos);
 }
 
 void KeyboardAxesState::on_quit() {

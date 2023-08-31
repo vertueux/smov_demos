@@ -27,6 +27,7 @@ void BasicState::set_back_servo_to(RobotParts part, float value) {
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Setting back servo number %d to [value=%f].", part, value);
 
   back_servos.value[part] = value; 
+  back_state_publisher->publish(back_servos);
 }
 
 void BasicState::set_front_servo_to(RobotParts part, float value) {
@@ -37,6 +38,7 @@ void BasicState::set_front_servo_to(RobotParts part, float value) {
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Setting front servo number %d to [value=%f].", part, value);
 
   front_servos.value[part] = value; 
+  front_state_publisher->publish(front_servos);
 }
 
 void BasicState::set_all_servos_to(float value) {
@@ -51,6 +53,9 @@ void BasicState::set_all_servos_to(float value) {
     front_servos.value[i] = value; 
     back_servos.value[i] = value;
   }
+
+  front_state_publisher->publish(front_servos);
+  back_state_publisher->publish(back_servos);
 }
 
 void BasicState::set_all_servos_to_center() {
@@ -61,6 +66,9 @@ void BasicState::set_all_servos_to_center() {
     front_servos.value[i] = 0.0f; 
     back_servos.value[i] = 0.0f;
   }
+
+  front_state_publisher->publish(front_servos);
+  back_state_publisher->publish(back_servos);
 }
 
 void BasicState::set_all_servos_to_min() {
@@ -70,6 +78,9 @@ void BasicState::set_all_servos_to_min() {
     front_servos.value[i] = -1.0f; 
     back_servos.value[i] = -1.0f;
   }
+
+  front_state_publisher->publish(front_servos);
+  back_state_publisher->publish(back_servos);
 }
 
 void BasicState::set_all_servos_to_max() {
@@ -79,6 +90,9 @@ void BasicState::set_all_servos_to_max() {
     front_servos.value[i] = 1.0f;
     back_servos.value[i] = 1.0f;
   }
+
+  front_state_publisher->publish(front_servos);
+  back_state_publisher->publish(back_servos);
 }
 
 }
